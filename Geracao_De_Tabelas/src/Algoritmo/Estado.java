@@ -3,7 +3,7 @@ import java.util.*
 ;
 public class Estado{
    private int id = -1;
-   private List<String> dados;
+   private List<LR> dados;
    private Map<String, Estado> transicao;
 
     public Estado(int id){
@@ -16,7 +16,7 @@ public class Estado{
         return id;
     }
 
-    public List<String> getDados(){
+    public List<LR> getDados(){
         return dados;
     }
 
@@ -25,12 +25,23 @@ public class Estado{
     }
 
     public void addDado(LR dado){
-        if(find(dado.begin())){
+        dados.add(dado);
+    }
+    public void transicao(String c, Estado estado){
+        transicao.put(c, estado);
+    }
 
+    public String printar(String saida, Estado e){
+        String texto = "Estados:\n";
+        texto += e.id + "\n";
+
+        for(LR i: e.dados){
+            texto += i + "\n";
         }
-    }
-    public void transicao(){
+        for(String i: e.transicao.keySet()){
+            texto += i + "\n";
+        }
 
+        return texto;
     }
-    
 }

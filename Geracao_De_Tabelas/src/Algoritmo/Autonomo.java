@@ -15,8 +15,35 @@ public class Autonomo{
 
     }
 
+
+    public void setTipo(int dado){
+
+    }
+    public void limpa(){
+
+    }
     public void criarAutomato(){
 
+    }
+
+    public Estado gerar(){
+        return null;
+    }
+    public void imprimir(){
+        
+    }
+
+    public Estado preencherEstado(Estado e){
+        return null;
+    }
+
+    public void verificar(Estado e){
+
+    }
+    public Estado criarUmEstado(LR dado){
+        Estado e = new Estado(estados.size());
+        //e.add(dado);
+        return preencherEstado(e);
     }
 
     public List<String> getEstados(){

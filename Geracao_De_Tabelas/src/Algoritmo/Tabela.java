@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.*;
 
 public class  Tabela {
-    private Map<Integer, Map<String, String>> tabela;
+    private Map<Integer, ArrayList<String>> tabela;
 
     public Tabela(){
         tabela = new HashMap<>();
@@ -27,7 +27,7 @@ public class  Tabela {
 
         for(int i = 0; i < a.getEstados().size(); i++){
             for(String s: colunas){
-                tabela[i][s] = "";
+                //tabela.put(i, s);
             }
         }
     }
@@ -37,21 +37,22 @@ public class  Tabela {
     public List<String> colunasPorItem(Autonomo a, LR dado){
         List<String> vetor = new ArrayList<>();
 
-        if(a.getTipo() == dado.){
+       // if(a.getTipo() == dado.){
 
-        }
-
+        //}
+        return null;
     }
 
     public String[] reduzirColunas(Autonomo a, String[] vetor, String[] colunas, String j, int index){
-
+        return null;
     }
 
     public  int getIndex(String[] vetor, String texto){
+        return 0;
     }
 
     public  void tabelaPasing(Autonomo a){
-
+        
     }
     
     public  void Imprimir(Autonomo a){
