@@ -3,9 +3,10 @@ package Algoritmo;
 import java.util.HashMap;
 import java.util.Map;
 
+
 import java.util.*;
 
-public class  Tabela {
+public class  Tabela{
     private Map<Integer, ArrayList<String>> tabela;
 
     public Tabela(){
@@ -43,7 +44,7 @@ public class  Tabela {
         return null;
     }
 
-    public String[] reduzirColunas(Autonomo a, String[] vetor, String[] colunas, String j, int index){
+    public List<String> reduzirColunas(Autonomo a, List<String> vetor, String[] colunas, String j, int index){
         return null;
     }
 

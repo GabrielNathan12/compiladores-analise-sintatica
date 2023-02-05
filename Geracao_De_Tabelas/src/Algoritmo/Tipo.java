@@ -2,7 +2,7 @@ package Algoritmo;
 import java.util.*;
 import java.util.regex.*;  
 
-public class Tipo {
+public class Tipo{
     private Map<String, List<String>> __GLC;
     private Map<String, String> regras;
 
@@ -21,11 +21,12 @@ public class Tipo {
 
 
     public boolean eVariavel(String var){
-        return Pattern.matches(var,"[A-Z][1-9]*");
+        return Pattern.compile("[A-Z][1-9]*").matcher(var).matches();
     }
-
+    
     public boolean regraValida(String regra){
-        return Pattern.matches(regra,"(([A-Z][1-9]*)|[a-z]|\\+)*|\\.");
+        return Pattern.compile("(([A-Z][1-9]*)|[a-z]|\\+)*|\\.").matcher(regra).matches();
+      
     }
 
     public boolean eTerminal(String terminal){
