@@ -1,7 +1,6 @@
 package Algoritmo;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -38,9 +37,9 @@ public class Tabela {
         
         String regra = Regra.substring(0,1);
         
-        int a;
-        for(String s: Gramatica){
-            a = s.indexOf(regra);
+        
+        for(int i =0; i< Gramatica.size(); i++){
+            int a = Gramatica.get(i).indexOf(regra,1);
             if(a != -1){
                 temRecursao = true;
             }
@@ -50,15 +49,7 @@ public class Tabela {
             System.out.println("Removendo a recursao direta com o simbolo inicial");
             Gramatica.add(regra + "'-> " + regra +"; ");
             
-        }
-
-          
-        
-        
-        
-        
-       
-        
+        }  
     }
 
     public void construirGramatica(String gramatica){
