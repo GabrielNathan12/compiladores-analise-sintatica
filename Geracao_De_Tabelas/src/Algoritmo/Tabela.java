@@ -1,6 +1,7 @@
 package Algoritmo;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -30,27 +31,64 @@ public class Tabela {
         return Pattern.compile(("[a-z]|\\.|$|\\+")).matcher(terminal).matches();
     }
 
-    public void construirGramatica(String gramatica){
-        boolean inseriu = false;
+    public void exetenderGramatica(){
+        boolean temRecursao = false;
+
+        String Regra = Gramatica.get(0);
         
-        while(!inseriu){
-            String[] g = gramatica.split(";");
-            
-            for(String gra: g){
-                if(gra.trim().length() > 1 && !"".equals(gra.trim())){
-                    Gramatica.add(gra);
-                    inseriu = true;
-                }
+        String regra = Regra.substring(0,1);
+        
+        int a;
+        for(String s: Gramatica){
+            a = s.indexOf(regra);
+            if(a != -1){
+                temRecursao = true;
             }
         }
+
+        if(temRecursao){
+            System.out.println("Removendo a recursao direta com o simbolo inicial");
+            Gramatica.add(regra + "'-> " + regra +"; ");
+            
+        }
+
+          
+        
+        
+        
+        
+       
+        
     }
-    
+
+    public void construirGramatica(String gramatica){
+        boolean inseriu = false;
+
+            while(!inseriu){
+                String[] g = gramatica.split(";");
+                
+                for(String gra: g){
+                    if(gra.trim().length() > 1 && !"".equals(gra.trim())){
+                        Gramatica.add(gra);
+                        inseriu = true;
+                    }
+                }
+            }
+    }
+
     public void imprimirGramatica(){
         for(String g: Gramatica){
             System.out.println(g);
         }
         System.out.println("\nTamanho Array = " + Gramatica.size());
     }
+
+    public void calcularItemLR(){
+        for(int i = 0; i < Gramatica.size(); i++){
+                    
+        }
+    }
+
 
     public void construirTabelaLL_0(){
         

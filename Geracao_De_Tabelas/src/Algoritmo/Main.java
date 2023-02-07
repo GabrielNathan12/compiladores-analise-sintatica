@@ -19,10 +19,13 @@ public class Main {
         gramatica = input.nextLine();
         System.out.println();
         Tabela t = new Tabela();
-        
+
         t.construirGramatica(gramatica);
+        t.exetenderGramatica();
         System.out.println("Gramatica inserida: ");
         t.imprimirGramatica();
+ 
+            
 
 
         input.close();
