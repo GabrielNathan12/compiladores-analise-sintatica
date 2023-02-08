@@ -6,7 +6,6 @@ public class Main {
     public static  void main(String[] args){
         Scanner input = new Scanner(System.in);
         String gramatica;
-        
         System.out.println("Exemplos de entrada de Gramatica: ");
         System.out.println("Toda regra precisa de um ponto e virgula para indicar o final da regra\n");
         System.out.println("Exemplo 1: ");
@@ -21,9 +20,10 @@ public class Main {
         Tabela t = new Tabela();
 
         t.construirGramatica(gramatica);
-        t.exetenderGramatica();
+        //t.exetenderGramatica();
         System.out.println("Gramatica inserida: ");
         t.imprimirGramatica();
+        t.criarTrasicao();
  
             
 
