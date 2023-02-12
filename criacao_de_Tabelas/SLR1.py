@@ -25,21 +25,21 @@ def derivacaoGramatica(regras, naoTerminal, simboloInicial):
     while novoSimbolo in naoTerminal:
         novoSimbolo += "'";
     
-    novasRegras.append([novoSimbolo, '.', simboloInicial]);
+    novasRegras.append([novoSimbolo, ['.', simboloInicial]]);
     
     for r in regras:
         k = r.split("->");
         lhs = k[0].strip();
-        rhs = k[1].strip;
+        rhs = k[1].strip();
         
-        aux = rhs.slipt("|");
+        aux = rhs.split('|');
         
         for h in aux:
             h = h.strip().split();
-            h.insert(0,".");
+            h.insert(0,'.');
             novasRegras.append([lhs, h]);
         
-        return novasRegras;
+    return novasRegras;
 
 def acharFecho(entrada, naoSimbolo):
     global SimboloInicial, \
@@ -86,7 +86,7 @@ def computacao(estado):
     
     gerarEstados = []
     
-    for r in disciEstados:
+    for r in disciEstados[estado]:
         
         if r[1][-1] != '.':
             index1 = r[1].index('.');
@@ -155,7 +155,7 @@ def gerarEstados(disEstados):
     
     while len(disEstados) != tam:
         tam = len(disEstados);
-        chave = list(disEstados.chave());
+        chave = list(disEstados.keys());
         
         for c in chave:
             if c not in chamarGoto:
@@ -282,7 +282,7 @@ def criarTabelaParse(disciEstado, mapEstado, T , regra):
         b = colunas.index(simbolo);
         
         if simbolo in regra:
-            tabela[a][b] - tabela[a][b]\
+            tabela[a][b] = tabela[a][b]\
                 + f"S{mapEstado[i]}";
     
     num = {};
@@ -299,13 +299,13 @@ def criarTabelaParse(disciEstado, mapEstado, T , regra):
     regras.insert(0, addRegras);
     
     for r in regras:
-        k = r.slit("->");
+        k = r.split("->");
         
         k[0] = k[0].strip();
         k[1] = k[1].strip();
         
         rhs = k[1];
-        multRegras = rhs.slit('|');
+        multRegras = rhs.split('|');
         
         for i in range(len(multRegras)):
             multRegras[i] = multRegras[i].strip();
@@ -320,10 +320,10 @@ def criarTabelaParse(disciEstado, mapEstado, T , regra):
                 
                 for k in num:
                     if num[k] == aux3:
-                        seguidorRes = Seguidor(r[0]);
+                        seguidorRes = Primeiro(r[0]);
                         
-                        for c in seguidorRes:
-                            index = colunas(c);
+                        for j in seguidorRes:
+                            index = colunas.index(j);
                             if k ==0:
                                 tabela[s][index] = "ACT";
                             else:
@@ -338,7 +338,7 @@ def criarTabelaParse(disciEstado, mapEstado, T , regra):
     j = 0;
     for y in tabela:
         tam = "{:>8}" * len(y);
-        print(f"{{:>3}}{tam.format(*y)}".format('I'+str(j)))
+        print(f"{{:>3}}"f"{tam.format(*y)}".format('I'+str(j)))
         j += 1;
 
 def printResultado(regras):
@@ -370,12 +370,15 @@ with open ("criacao_de_tabelas/gramatica.txt") as arq:
                 auxNaoTerminais.append(getNaoTerminal(i));
 
 
+    
 NaoTerminal = []
 for i in auxNaoTerminais:
     for j in i:
         NaoTerminal.append(j);
 
-
+for i in regras:
+    SimboloInicial = i[0];
+    
 auxTerminais = []
 
 with open ("criacao_de_tabelas/gramatica.txt") as arq:   
@@ -394,8 +397,9 @@ NaoTerminal = list(set(NaoTerminal));
 Terminal = list(set(Terminal));
 
 
+
 print("Gramatica Original:");
-SimboloInicial = auxNaoTerminais[0];
+#SimboloInicial = auxNaoTerminais[0];
 for i in regras:
     print(i);
 
