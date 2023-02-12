@@ -496,7 +496,9 @@ for i in auxterm_userdef:
 term_userdef = list(set(term_userdef));
 
 start_symbol = nonterm_userdef[0]
-print("CONFIRA O ESTADO INICIAL DA GRAMATICA ",)
+print("CONFIRA O ESTADO INICIAL DA GRAMATICA ")
+print("Que dependendo da leitura no arquivo ele pega o estado errado ")
+print("Ai so reniciar o codigo")
 print("Simbolo Inicial: ", start_symbol)
 # example sample set 02
 # rules = ["S -> a X d | b Y d | a Y e | b X e",
